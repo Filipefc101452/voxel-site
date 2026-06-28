@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Voxel System - Dashboard de Gerenciamento">
+    <title>Voxel System - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- LOGIN MODAL -->
+    <div id="loginModal" class="modal active">
+        <div class="modal-content login-box">
+            <div class="login-header">
+                <h1><i class="fas fa-cube"></i> Voxel System</h1>
+                <p>Dashboard de Gerenciamento</p>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Usuário</label>
+                    <input type="text" id="email" placeholder="voxel" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" placeholder="101452" required>
+                </div>
+                <div class="remember-me">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Lembrar-me</label>
+                </div>
+                <button type="submit" class="btn btn-login">
+                    <i class="fas fa-sign-in-alt"></i> Entrar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="dashboard hidden">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-cube"></i> Voxel System</h2>
+                <button class="sidebar-close" onclick="toggleSidebar()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <p class="nav-title">MENU PRINCIPAL</p>
+                    <a href="#" class="nav-link active" onclick="loadPage('overview')">
+                        <i class="fas fa-chart-line"></i> Visão Geral
+                    </a>
+                    <a href="#" class="nav-link" onclick="loadPage('projetos')">
+                        <i class="fas fa-project-diagram"></i> Projetos
+                    </a>
+                    <a href="#" class="nav-link" onclick="loadPage('usuarios')">
+                        <i class="fas fa-users"></i> Usuários
+                    </a>
+                    <a href="#" class="nav-link" onclick="loadPage('tarefas')">
+                        <i class="fas fa-tasks"></i> Tarefas
+                    </a>
+                    <a href="#" class="nav-link" onclick="loadPage('relatorios')">
+                        <i class="fas fa-bar-chart"></i> Relatórios
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <p class="nav-title">ADMINISTRAÇÃO</p>
+                    <a href="#" class="nav-link" onclick="loadPage('configuracoes')">
+                        <i class="fas fa-cog"></i> Configurações
+                    </a>
+                    <a href="#" class="nav-link" onclick="loadPage('seguranca')">
+                        <i class="fas fa-shield-alt"></i> Segurança
+                    </a>
+                    <a href="#" class="nav-link" onclick="loadPage('logs')">
+                        <i class="fas fa-file-alt"></i> Logs
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Sair
+                </button>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- TOP BAR -->
+            <div class="topbar">
+                <button class="toggle-sidebar" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Pesquisar...">
+                </div>
+
+                <div class="topbar-right">
+                    <button class="notification-btn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    
+                    <div class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=Admin+User&background=6366f1&color=fff" alt="User">
+                        <div class="user-info">
+                            <p class="user-name" id="userName">Carregando...</p>
+                            <p class="user-role">Administrador</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE CONTENT -->
+            <div class="page-content">
+                <!-- OVERVIEW PAGE -->
+                <div id="page-overview" class="page active">
+                    <div class="page-header">
+                        <h2>Visão Geral</h2>
+                        <p>Bem-vindo ao seu dashboard de gerenciamento</p>
+                    </div>
+
+                    <!-- STATS CARDS -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>Projetos Ativos</h3>
+                                <p class="stat-number" id="totalProjetos">0</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #ec4899, #f472b6);">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>Usuários</h3>
+                                <p class="stat-number" id="totalUsuarios">0</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #10b981, #34d399);">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>Tarefas Pendentes</h3>
+                                <p class="stat-number" id="totalTarefas">0</p>
+                            </div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>Concluído</h3>
+                                <p class="stat-number" id="percentualConcluido">0%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CHARTS -->
+                    <div class="charts-container">
+                        <div class="chart-box">
+                            <h3>Atividade Mensal</h3>
+                            <canvas id="activityChart" width="400" height="200"></canvas>
+                        </div>
+
+                        <div class="chart-box">
+                            <h3>Status dos Projetos</h3>
+                            <div class="project-status">
+                                <div class="status-item">
+                                    <span class="status-color" style="background: #10b981;"></span>
+                                    <span>Em Progresso: <strong id="statusEmProgresso">0</strong></span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-color" style="background: #3b82f6;"></span>
+                                    <span>Concluído: <strong id="statusConcluido">0</strong></span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-color" style="background: #f59e0b;"></span>
+                                    <span>Planejamento: <strong id="statusPlanejamento">0</strong></span>
+                                </div>
+                                <div class="status-item">
+                                    <span class="status-color" style="background: #ef4444;"></span>
+                                    <span>Atrasado: <strong id="statusAtrasado">0</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RECENT PROJECTS -->
+                    <div class="recent-section">
+                        <div class="section-header">
+                            <h3>Projetos Recentes</h3>
+                            <a href="#" onclick="loadPage('projetos')">Ver Todos →</a>
+                        </div>
+                        <div id="recentProjects" class="recent-list">
+                            <!-- Preenchido por JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROJECTS PAGE -->
+                <div id="page-projetos" class="page">
+                    <div class="page-header">
+                        <h2>Gerenciar Projetos</h2>
+                        <button class="btn btn-primary" onclick="abrirModalProjeto()">
+                            <i class="fas fa-plus"></i> Novo Projeto
+                        </button>
+                    </div>
+
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome do Projeto</th>
+                                    <th>Cliente</th>
+                                    <th>Status</th>
+                                    <th>Progresso</th>
+                                    <th>Data Início</th>
+                                    <th>Data Término</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="projetosTable">
+                                <!-- Preenchido por JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- USERS PAGE -->
+                <div id="page-usuarios" class="page">
+                    <div class="page-header">
+                        <h2>Gerenciar Usuários</h2>
+                        <button class="btn btn-primary" onclick="abrirModalUsuario()">
+                            <i class="fas fa-plus"></i> Novo Usuário
+                        </button>
+                    </div>
+
+                    <div class="users-header">
+                        <div class="user-summary">
+                            <span class="summary-label">Total de usuários</span>
+                            <strong id="userCount">0 usuários</strong>
+                        </div>
+                        <div class="user-search">
+                            <i class="fas fa-search"></i>
+                            <input id="userSearch" type="text" placeholder="Buscar por nome, cargo ou e-mail" />
+                        </div>
+                    </div>
+
+                    <div class="users-grid">
+                        <div id="usuariosContainer">
+                            <!-- Preenchido por JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TASKS PAGE -->
+                <div id="page-tarefas" class="page">
+                    <div class="page-header">
+                        <h2>Gerenciar Tarefas</h2>
+                        <button class="btn btn-primary" onclick="abrirModalTarefa()">
+                            <i class="fas fa-plus"></i> Nova Tarefa
+                        </button>
+                    </div>
+
+                    <div class="tasks-container">
+                        <div class="task-column">
+                            <h3>📋 Planejamento</h3>
+                            <div id="tarefasPlanejamento" class="task-list">
+                                <!-- Preenchido por JavaScript -->
+                            </div>
+                        </div>
+                        <div class="task-column">
+                            <h3>🔄 Em Progresso</h3>
+                            <div id="tarefasEmProgresso" class="task-list">
+                                <!-- Preenchido por JavaScript -->
+                            </div>
+                        </div>
+                        <div class="task-column">
+                            <h3>✅ Concluído</h3>
+                            <div id="tarefasConcluido" class="task-list">
+                                <!-- Preenchido por JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REPORTS PAGE -->
+                <div id="page-relatorios" class="page">
+                    <div class="page-header">
+                        <h2>Relatórios</h2>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-download"></i> Exportar
+                        </button>
+                    </div>
+
+                    <div class="reports-container">
+                        <div class="report-card">
+                            <h3>Relatório de Performance</h3>
+                            <p>Análise detalhada de desempenho dos projetos</p>
+                            <button class="btn btn-secondary">Ver Relatório</button>
+                        </div>
+                        <div class="report-card">
+                            <h3>Relatório Financeiro</h3>
+                            <p>Informações sobre custos e orçamentos</p>
+                            <button class="btn btn-secondary">Ver Relatório</button>
+                        </div>
+                        <div class="report-card">
+                            <h3>Relatório de Equipe</h3>
+                            <p>Análise de produtividade da equipe</p>
+                            <button class="btn btn-secondary">Ver Relatório</button>
+                        </div>
+                        <div class="report-card">
+                            <h3>Relatório de Cliente</h3>
+                            <p>Satisfação e status dos clientes</p>
+                            <button class="btn btn-secondary">Ver Relatório</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SETTINGS PAGE -->
+                <div id="page-configuracoes" class="page">
+                    <div class="page-header">
+                        <h2>Configurações</h2>
+                    </div>
+
+                    <div class="settings-container">
+                        <div class="settings-group">
+                            <h3>Informações da Empresa</h3>
+                            <div class="form-group">
+                                <label>Nome da Empresa</label>
+                                <input type="text" value="Voxel System" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>E-mail de Contato</label>
+                                <input type="email" value="contato@voxelsystem.com" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Telefone</label>
+                                <input type="tel" value="+55 (11) 98765-4321" class="form-control">
+                            </div>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-save"></i> Salvar Alterações
+                            </button>
+                        </div>
+
+                        <div class="settings-group">
+                            <h3>Preferências do Sistema</h3>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox" checked>
+                                    Ativar notificações por e-mail
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox">
+                                    Modo escuro
+                                </label>
+                            </div>
+                            <div class="setting-item">
+                                <label>
+                                    <input type="checkbox" checked>
+                                    Atualizações automáticas
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECURITY PAGE -->
+                <div id="page-seguranca" class="page">
+                    <div class="page-header">
+                        <h2>Segurança</h2>
+                    </div>
+
+                    <div class="security-container">
+                        <div class="security-card">
+                            <h3>🔐 Alterar Senha</h3>
+                            <div class="form-group">
+                                <label>Senha Atual</label>
+                                <input type="password" class="form-control" placeholder="Digite sua senha atual">
+                            </div>
+                            <div class="form-group">
+                                <label>Nova Senha</label>
+                                <input type="password" class="form-control" placeholder="Digite nova senha">
+                            </div>
+                            <div class="form-group">
+                                <label>Confirmar Senha</label>
+                                <input type="password" class="form-control" placeholder="Confirme a nova senha">
+                            </div>
+                            <button class="btn btn-primary">Atualizar Senha</button>
+                        </div>
+
+                        <div class="security-card">
+                            <h3>🛡️ Autenticação em Dois Fatores</h3>
+                            <p>Adicione uma camada extra de segurança à sua conta</p>
+                            <button class="btn btn-secondary">Ativar 2FA</button>
+                        </div>
+
+                        <div class="security-card">
+                            <h3>📝 Sessões Ativas</h3>
+                            <div class="sessions-list">
+                                <div class="session-item">
+                                    <i class="fas fa-laptop"></i>
+                                    <span>Windows - Chrome - Última atividade: Agora</span>
+                                    <button class="btn-small">Sair</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LOGS PAGE -->
+                <div id="page-logs" class="page">
+                    <div class="page-header">
+                        <h2>Logs do Sistema</h2>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-sync"></i> Atualizar
+                        </button>
+                    </div>
+
+                    <div class="logs-container">
+                        <table class="logs-table">
+                            <thead>
+                                <tr>
+                                    <th>Data/Hora</th>
+                                    <th>Usuário</th>
+                                    <th>Ação</th>
+                                    <th>Status</th>
+                                    <th>Detalhes</th>
+                                </tr>
+                            </thead>
+                            <tbody id="logsTable">
+                                <!-- Preenchido por JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- MODALS -->
+    <!-- Modal Projeto -->
+    <div id="projetoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Novo Projeto</h2>
+                <button class="modal-close" onclick="fecharModal('projetoModal')">×</button>
+            </div>
+            <form class="modal-form" onsubmit="salvarProjeto(event)">
+                <div class="form-group">
+                    <label>Nome do Projeto</label>
+                    <input type="text" required class="form-control">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Cliente</label>
+                        <input type="text" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select class="form-control">
+                            <option>Planejamento</option>
+                            <option>Em Progresso</option>
+                            <option>Concluído</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Data Início</label>
+                        <input type="date" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Data Término</label>
+                        <input type="date" required class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea rows="4" class="form-control"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="fecharModal('projetoModal')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Salvar Projeto</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Usuário -->
+    <div id="usuarioModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="usuarioModalTitle">Novo Usuário</h2>
+                <button class="modal-close" onclick="fecharModal('usuarioModal')">×</button>
+            </div>
+            <form class="modal-form" onsubmit="salvarUsuario(event)">
+                <div class="avatar-edit">
+                    <img id="usuarioAvatarPreview" src="https://ui-avatars.com/api/?name=Usu%C3%A1rio&background=6366f1&color=fff&size=128&rounded=true" alt="Avatar do Usuário">
+                    <div class="avatar-actions">
+                        <button type="button" class="btn btn-secondary btn-small" onclick="triggerAvatarUpload()">Alterar Avatar</button>
+                        <button type="button" class="btn btn-secondary btn-small" onclick="resetUsuarioAvatar()">Restaurar</button>
+                    </div>
+                    <input id="avatarInput" type="file" accept="image/*" class="avatar-input" onchange="handleAvatarInputChange(event)">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nome</label>
+                        <input type="text" name="name" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" name="email" required class="form-control">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Cargo</label>
+                        <input type="text" name="role" required class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Departamento</label>
+                        <select name="department" class="form-control">
+                            <option>Desenvolvimento</option>
+                            <option>Design</option>
+                            <option>Gestão</option>
+                            <option>Suporte</option>
+                            <option>Administração</option>
+                            <option>Comercial</option>
+                            <option>Marketing/Propaganda</option>
+                            <option>Diretoria</option>
+                            <option>Vice-Diretoria</option>
+                            <option>Gerente</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="fecharModal('usuarioModal')">Cancelar</button>
+                    <button id="usuarioSubmitButton" type="submit" class="btn btn-primary">Criar Usuário</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Tarefa -->
+    <div id="tarefaModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Nova Tarefa</h2>
+                <button class="modal-close" onclick="fecharModal('tarefaModal')">×</button>
+            </div>
+            <form class="modal-form" onsubmit="salvarTarefa(event)">
+                <div class="form-group">
+                    <label>Título da Tarefa</label>
+                    <input type="text" required class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Projeto</label>
+                    <select class="form-control">
+                        <option>Selecione um projeto</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Descrição</label>
+                    <textarea rows="4" class="form-control"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Prioridade</label>
+                        <select class="form-control">
+                            <option>Baixa</option>
+                            <option>Média</option>
+                            <option>Alta</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Responsável</label>
+                        <select class="form-control">
+                            <option>Selecione um usuário</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="fecharModal('tarefaModal')">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Criar Tarefa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
