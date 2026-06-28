@@ -1,0 +1,61 @@
+{
+  "project": {
+    "name": "Voxel System",
+    "version": "1.0.0",
+    "description": "Plataforma Web Profissional para Empresa de Sistemas",
+    "company": "Voxel System",
+    "website": "www.voxelsystem.com"
+  },
+  "branding": {
+    "colors": {
+      "primary": "#6366f1",
+      "secondary": "#ec4899",
+      "dark": "#1f2937",
+      "light": "#f9fafb",
+      "text": "#374151",
+      "border": "#e5e7eb"
+    },
+    "logo": "Voxel System",
+    "favicon": "🧊"
+  },
+  "contact": {
+    "email": "contato@voxelsystem.com",
+    "phone": "+55 (11) 98765-4321",
+    "location": "São Paulo - SP, Brasil"
+  },
+  "social": {
+    "facebook": "https://facebook.com/voxelsystem",
+    "twitter": "https://twitter.com/voxelsystem",
+    "linkedin": "https://linkedin.com/company/voxelsystem",
+    "instagram": "https://instagram.com/voxelsystem"
+  },
+  "services": [
+    "Desenvolvimento Web",
+    "Desenvolvimento Mobile",
+    "Soluções de Dados",
+    "Cloud Computing",
+    "Segurança da Informação",
+    "Suporte Técnico"
+  ],
+  "technologies": [
+    "JavaScript",
+    "React",
+    "Node.js",
+    "Python",
+    "Docker",
+    "AWS"
+  ],
+  "seo": {
+    "title": "Voxel System - Soluções em Tecnologia",
+    "description": "Soluções em sistemas e tecnologia para sua empresa. Desenvolvimento web, mobile, cloud e segurança.",
+    "keywords": "sistemas, tecnologia, desenvolvimento, web, mobile, cloud, consultoria"
+  },
+  "features": {
+    "responsiveDesign": true,
+    "mobileMenu": true,
+    "contactForm": true,
+    "analytics": false,
+    "darkMode": false,
+    "multiLanguage": false
+  }
+}
