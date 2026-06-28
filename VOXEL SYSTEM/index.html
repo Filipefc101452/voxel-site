@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Voxel System - Soluções em Sistemas e Tecnologia para sua Empresa">
+    <title>Voxel System - Soluções em Tecnologia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <h1><i class="fas fa-cube"></i> Voxel System</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Início</a></li>
+                <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="#servicos" class="nav-link">Serviços</a></li>
+                <li><a href="#portfolio" class="nav-link">Portfólio</a></li>
+                <li><a href="#" class="nav-link" onclick="openLoginModal(); return false;">Dashboard</a></li>
+                <li><a href="#contato" class="nav-link">Contato</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Transforme sua Empresa com Tecnologia</h2>
+            <p>Soluções em sistemas customizados para impulsionar seu negócio</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('contato').scrollIntoView({behavior: 'smooth'})">
+                    Solicite uma Consultoria
+                </button>
+                <button class="btn btn-secondary" onclick="document.getElementById('servicos').scrollIntoView({behavior: 'smooth'})">
+                    Conheça Nossos Serviços
+                </button>
+                <a href="#" class="btn btn-primary" style="display: inline-flex; align-items: center; justify-content: center;" onclick="openLoginModal(); return false;">
+                    <i class="fas fa-chart-line" style="margin-right: 0.75rem"></i> Acessar Dashboard
+                </a>
+            </div>
+        </div>
+        <div class="hero-animation">
+            <div class="cube"></div>
+        </div>
+    </section>
+
+    <!-- LOGIN MODAL -->
+    <div id="loginModal" class="login-modal">
+        <div class="login-modal-overlay" onclick="closeLoginModal()"></div>
+        <div class="login-modal-content">
+            <button class="login-modal-close" onclick="closeLoginModal()">×</button>
+            <div class="login-modal-header">
+                <h2>Entrar no Dashboard</h2>
+                <p>Use suas credenciais para acessar o painel administrativo.</p>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="loginEmail">Login</label>
+                    <input type="text" id="loginEmail" placeholder="voxel" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Senha</label>
+                    <input type="password" id="loginPassword" placeholder="101452" required>
+                </div>
+                <div class="form-actions login-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeLoginModal()">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <section id="sobre" class="sobre">
+        <div class="container">
+            <h2>Sobre a Voxel System</h2>
+            <div class="sobre-content">
+                <div class="sobre-text">
+                    <p>A Voxel System é uma empresa especializada em desenvolvimento de sistemas, soluções web e consultoria tecnológica, ajudamos empresas de todos os tamanhos a alcançarem seus objetivos através da tecnologia.</p>
+                    <p>Nossa missão é fornecer soluções inovadoras, escaláveis e seguras que transformem a forma como as empresas operam.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h3>xxx</h3>
+                            <p>xxxx</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>yyyyy</h3>
+                            <p>Clientes Satisfeitos</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>yyyyy</h3>
+                            <p>Anos de Experiência</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="sobre-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="servicos" class="servicos">
+        <div class="container">
+            <h2>Nossos Serviços</h2>
+            <div class="servicos-grid">
+                <div class="service-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Desenvolvimento Web</h3>
+                    <p>Criamos aplicações web modernas, responsivas e performáticas usando as tecnologias mais atualizadas.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Desenvolvimento Mobile</h3>
+                    <p>Aplicativos nativos e híbridos para iOS e Android com experiência de usuário excepcional.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Soluções de Dados</h3>
+                    <p>Banco de dados robustos, análise de dados e inteligência de negócios para suas decisões.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Cloud Computing</h3>
+                    <p>Infraestrutura em nuvem escalável, segura e otimizada para suas aplicações.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Segurança da Informação</h3>
+                    <p>Proteção completa de seus dados com as melhores práticas de segurança do mercado.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>Suporte Técnico</h3>
+                    <p>Equipe disponível 24/7 para garantir que seus sistemas funcionem perfeitamente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2>Nosso Portfólio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-commerce Platform</h3>
+                    <p>Plataforma de e-commerce completa com pagamento, estoque e logística integrados</p>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Dashboard Analítico</h3>
+                    <p>Sistema de análise em tempo real com visualização de dados avançada</p>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Gestão de RH</h3>
+                    <p>Sistema integrado para gerenciar todos os processos de recursos humanos</p>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h3>Sistema Hospitalar</h3>
+                    <p>Plataforma HIPAA compliant para gestão de clínicas e hospitais</p>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Rastreamento de Frota</h3>
+                    <p>Sistema GPS integrado para monitoramento de frotas em tempo real</p>
+                </div>
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Plataforma EAD</h3>
+                    <p>Ambiente virtual de aprendizagem com salas de aula interativas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TECHNOLOGY STACK SECTION -->
+    <section class="tech-stack">
+        <div class="container">
+            <h2>Tecnologias que Usamos</h2>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <i class="fab fa-js-square"></i>
+                    <p>JavaScript</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-react"></i>
+                    <p>React</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-node"></i>
+                    <p>Node.js</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-python"></i>
+                    <p>Python</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-docker"></i>
+                    <p>Docker</p>
+                </div>
+                <div class="tech-item">
+                    <i class="fab fa-aws"></i>
+                    <p>AWS</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contato" class="contato">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <div class="contato-content">
+                <div class="contato-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Localização</h3>
+                            <p>São Paulo - SP, Brasil</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Telefone</h3>
+                            <p>+55 (11) 98765-4321</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>E-mail</h3>
+                            <p>contato@voxelsystem.com</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contato-form" id="contactForm">
+                    <input type="text" placeholder="Seu Nome" required>
+                    <input type="email" placeholder="Seu E-mail" required>
+                    <input type="text" placeholder="Assunto" required>
+                    <textarea placeholder="Sua Mensagem" rows="5" required></textarea>
+                    <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Voxel System</h3>
+                    <p>Transformando ideias em soluções tecnológicas inovadoras</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#sobre">Sobre</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#portfolio">Portfólio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Siga-nos</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Voxel System. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button id="scrollTopBtn" class="scroll-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>

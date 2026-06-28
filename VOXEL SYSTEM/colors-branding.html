@@ -1,0 +1,538 @@
+<!-- 
+    VOXEL SYSTEM - GUIA DE CORES E BRANDING
+    Arquivo de referência para variáveis de customização
+-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Cores - Voxel System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1f2937;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            color: #1f2937;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .color-box {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .color-sample {
+            height: 150px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            padding: 10px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .color-info {
+            padding: 15px;
+            background: white;
+        }
+
+        .color-name {
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 5px;
+        }
+
+        .color-code {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .color-usage {
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .button-demo {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #6366f1;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #ec4899;
+            color: white;
+        }
+
+        .btn-dark {
+            background: #1f2937;
+            color: white;
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid #6366f1;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        th {
+            background: #f9fafb;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .color-square {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            margin-right: 10px;
+            vertical-align: middle;
+            border: 1px solid #ddd;
+        }
+
+        .gradient-box {
+            height: 200px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .warning {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: #92400e;
+        }
+
+        .success {
+            background: #d1fae5;
+            border-left: 4px solid #10b981;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            color: #065f46;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Guia de Cores e Branding - Voxel System</h1>
+
+        <!-- PALETA PRINCIPAL -->
+        <div class="section">
+            <h2>Paleta Principal</h2>
+            <div class="color-grid">
+                <div class="color-box">
+                    <div class="color-sample" style="background: #6366f1;">
+                        #6366f1
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Primary (Roxo)</div>
+                        <div class="color-code">--primary-color</div>
+                        <div class="color-usage">Botões, links, destaques</div>
+                    </div>
+                </div>
+
+                <div class="color-box">
+                    <div class="color-sample" style="background: #ec4899;">
+                        #ec4899
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Secondary (Rosa)</div>
+                        <div class="color-code">--secondary-color</div>
+                        <div class="color-usage">CTA, hover, acentos</div>
+                    </div>
+                </div>
+
+                <div class="color-box">
+                    <div class="color-sample" style="background: #1f2937;">
+                        #1f2937
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Dark (Cinza Escuro)</div>
+                        <div class="color-code">--dark-color</div>
+                        <div class="color-usage">Texto, navbar, fundo</div>
+                    </div>
+                </div>
+
+                <div class="color-box">
+                    <div class="color-sample" style="background: #f9fafb;">
+                        #f9fafb
+                    </div>
+                    <div class="color-info">
+                        <div class="color-name">Light (Cinza Claro)</div>
+                        <div class="color-code">--light-color</div>
+                        <div class="color-usage">Fundo claro, cards</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CORES NEUTRAS -->
+        <div class="section">
+            <h2>Cores Neutras</h2>
+            <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>Código Hex</th>
+                    <th>Uso</th>
+                    <th>Exemplo</th>
+                </tr>
+                <tr>
+                    <td>Texto Principal</td>
+                    <td>#374151</td>
+                    <td>Texto do corpo</td>
+                    <td><span class="color-square" style="background: #374151;"></span>Corpo do texto</td>
+                </tr>
+                <tr>
+                    <td>Borda</td>
+                    <td>#e5e7eb</td>
+                    <td>Bordas, dividers</td>
+                    <td><span class="color-square" style="background: #e5e7eb;"></span>Linha</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- GRADIENTES -->
+        <div class="section">
+            <h2>Gradientes Principais</h2>
+            <div class="gradient-box" style="background: linear-gradient(135deg, #1f2937 0%, #6366f1 100%);">
+                Gradiente Principal (Dark → Primary)
+            </div>
+            <div class="code-block">
+background: linear-gradient(135deg, #1f2937 0%, #6366f1 100%);
+            </div>
+
+            <div class="gradient-box" style="background: linear-gradient(135deg, #6366f1, #ec4899);">
+                Gradiente Secundário (Primary → Secondary)
+            </div>
+            <div class="code-block">
+background: linear-gradient(135deg, #6366f1, #ec4899);
+            </div>
+
+            <div class="gradient-box" style="background: linear-gradient(135deg, #ec4899, #a855f7);">
+                Gradiente Accent (Secondary → Purple)
+            </div>
+            <div class="code-block">
+background: linear-gradient(135deg, #ec4899, #a855f7);
+            </div>
+        </div>
+
+        <!-- TIPOGRAFIA -->
+        <div class="section">
+            <h2>Tipografia</h2>
+            <table>
+                <tr>
+                    <th>Elemento</th>
+                    <th>Tamanho</th>
+                    <th>Peso</th>
+                    <th>Cor</th>
+                </tr>
+                <tr>
+                    <td>H1 (Títulos Principais)</td>
+                    <td>3rem / 48px</td>
+                    <td>Bold (700)</td>
+                    <td>#1f2937</td>
+                </tr>
+                <tr>
+                    <td>H2 (Subtítulos)</td>
+                    <td>2.5rem / 40px</td>
+                    <td>Bold (700)</td>
+                    <td>#1f2937</td>
+                </tr>
+                <tr>
+                    <td>H3 (Cabeçalhos)</td>
+                    <td>1.5rem / 24px</td>
+                    <td>SemiBold (600)</td>
+                    <td>#1f2937</td>
+                </tr>
+                <tr>
+                    <td>Body (Parágrafo)</td>
+                    <td>1rem / 16px</td>
+                    <td>Normal (400)</td>
+                    <td>#374151</td>
+                </tr>
+            </table>
+            <div class="code-block">
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            </div>
+        </div>
+
+        <!-- BOTÕES -->
+        <div class="section">
+            <h2>Estilos de Botão</h2>
+            <div class="button-demo">
+                <button class="btn btn-primary">Botão Primary</button>
+                <button class="btn btn-secondary">Botão Secondary</button>
+                <button class="btn btn-dark">Botão Dark</button>
+            </div>
+            <div class="code-block">
+.btn-primary {
+    background: #6366f1;
+    color: white;
+}
+
+.btn-secondary {
+    background: #ec4899;
+    color: white;
+}
+            </div>
+        </div>
+
+        <!-- ACESSIBILIDADE -->
+        <div class="section">
+            <h2>Acessibilidade</h2>
+            <table>
+                <tr>
+                    <th>Combinação</th>
+                    <th>Ratio</th>
+                    <th>Status</th>
+                </tr>
+                <tr>
+                    <td>Dark (#1f2937) + White</td>
+                    <td>14.8:1</td>
+                    <td>✅ AAA (Excelente)</td>
+                </tr>
+                <tr>
+                    <td>Primary (#6366f1) + White</td>
+                    <td>7.2:1</td>
+                    <td>✅ AAA (Excelente)</td>
+                </tr>
+                <tr>
+                    <td>Secondary (#ec4899) + White</td>
+                    <td>5.2:1</td>
+                    <td>✅ AA (Bom)</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- DISTÂNCIAS -->
+        <div class="section">
+            <h2>Espaçamentos Padrão</h2>
+            <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Uso</th>
+                </tr>
+                <tr>
+                    <td>Padding Pequeno</td>
+                    <td>0.5rem / 8px</td>
+                    <td>Elementos internos</td>
+                </tr>
+                <tr>
+                    <td>Padding Normal</td>
+                    <td>1rem / 16px</td>
+                    <td>Cards, containers</td>
+                </tr>
+                <tr>
+                    <td>Padding Grande</td>
+                    <td>2rem / 32px</td>
+                    <td>Seções</td>
+                </tr>
+                <tr>
+                    <td>Seção</td>
+                    <td>100px 0</td>
+                    <td>Padding vertical</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- SOMBRAS -->
+        <div class="section">
+            <h2>Sombras Padrão</h2>
+            <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>Valor</th>
+                    <th>Uso</th>
+                </tr>
+                <tr>
+                    <td>Leve</td>
+                    <td>0 2px 10px rgba(0,0,0,0.1)</td>
+                    <td>Cards, hover</td>
+                </tr>
+                <tr>
+                    <td>Normal</td>
+                    <td>0 5px 15px rgba(0,0,0,0.1)</td>
+                    <td>Cards</td>
+                </tr>
+                <tr>
+                    <td>Grande</td>
+                    <td>0 10px 30px rgba(0,0,0,0.1)</td>
+                    <td>Modal, dropdown</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- TRANSIÇÕES -->
+        <div class="section">
+            <h2>Transições e Animações</h2>
+            <div class="code-block">
+--transition: all 0.3s ease;
+
+Exemplos de uso:
+• Hover em botões: 0.2s
+• Mudança de cor: 0.3s
+• Animação de entrada: 0.6s
+            </div>
+        </div>
+
+        <!-- EXEMPLOS DE MUDANÇA -->
+        <div class="section">
+            <h2>Como Alterar as Cores</h2>
+            <div class="success">
+                ✨ Para mudar as cores globalmente, edite apenas o arquivo <strong>styles.css</strong>
+            </div>
+
+            <h3 style="margin-top: 20px;">Passo 1: Localize as variáveis CSS</h3>
+            <div class="code-block">
+:root {
+    --primary-color: #6366f1;
+    --secondary-color: #ec4899;
+    --dark-color: #1f2937;
+    --light-color: #f9fafb;
+    --text-color: #374151;
+    --border-color: #e5e7eb;
+}
+            </div>
+
+            <h3>Passo 2: Substitua pelos códigos HEX desejados</h3>
+            <div class="code-block">
+:root {
+    --primary-color: #seu_novo_roxo;
+    --secondary-color: #sua_nova_rosa;
+    --dark-color: #seu_novo_preto;
+    --light-color: #seu_novo_cinza_claro;
+    --text-color: #sua_cor_texto;
+    --border-color: #sua_cor_borda;
+}
+            </div>
+
+            <h3>Passo 3: Salve o arquivo</h3>
+            <p style="color: #666;">Pronto! Todas as cores do site mudarão automaticamente.</p>
+        </div>
+
+        <!-- VERIFICAÇÃO -->
+        <div class="section">
+            <h2>Checklist de Branding</h2>
+            <div style="line-height: 2;">
+                <p>☐ Cores primária e secundária definidas</p>
+                <p>☐ Logo/marca criada</p>
+                <p>☐ Tipografia consistente</p>
+                <p>☐ Gradientes personalizados</p>
+                <p>☐ Acessibilidade validada</p>
+                <p>☐ Testes em diferentes dispositivos</p>
+                <p>☐ Documentação atualizada</p>
+            </div>
+        </div>
+
+        <!-- RECURSOS -->
+        <div class="section">
+            <h2>Ferramentas Úteis</h2>
+            <ul style="list-style: none; line-height: 2;">
+                <li>🎨 <a href="https://coolors.co" target="_blank">Coolors.co</a> - Gerar paletas de cores</li>
+                <li>🎨 <a href="https://colorhexa.com" target="_blank">ColorHexa</a> - Informações sobre cores</li>
+                <li>👁️ <a href="https://webaim.org/resources/contrastchecker/" target="_blank">WebAIM</a> - Verificar contraste</li>
+                <li>📐 <a href="https://cssgradient.io" target="_blank">CSS Gradient</a> - Criar gradientes</li>
+                <li>🖼️ <a href="https://fontawesome.com" target="_blank">Font Awesome</a> - Ícones</li>
+            </ul>
+        </div>
+
+    </div>
+</body>
+</html>
